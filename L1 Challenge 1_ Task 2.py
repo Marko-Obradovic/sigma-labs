@@ -1,11 +1,20 @@
-name = input('What\'s your first name?: ')
+def get_name():
+    name = input("What's your first name?: ")
+    return name.title().strip()
 
 
-def name_format(name):
-    return name[0].upper() + name[1:].lower()
+def get_greeting(name):
+    if name in {"Alice", "Bob"}:
+        return(f"Hello {name}!")
+    else:
+        return("Sorry... You're not authorised to be greeted!")
 
 
-if name_format(name) == 'Chris':
-    print('Sorry... You\'re not authorised to be greeted!')
-if name_format(name) == 'Alice':
-    print('Hello Alice!')
+def main(name):
+    greeting_string = name
+    print(greeting_string)
+
+if __name__ == "__main__":
+    main(get_greeting(get_name()))
+
+
