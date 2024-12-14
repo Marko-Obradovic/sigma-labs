@@ -2,7 +2,7 @@ import outed
 import unittest
 
 
-class test_outed_solution(unittest.TestCase):
+class TestOutedSolution(unittest.TestCase):
 
     def test_bad_outcome_one(self):
         self.assertEqual(

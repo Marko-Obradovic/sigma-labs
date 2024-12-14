@@ -2,7 +2,7 @@ import boredom_score
 import unittest
 
 
-class test_boredom_score_solution(unittest.TestCase):
+class TestBoredomScoreSolution(unittest.TestCase):
 
     def test_overwhelmed_message(self):
         self.assertEqual(
