@@ -1,5 +1,4 @@
-def topKFrequent(words: list[str], k: int) -> list[str]:
-    words = ["i","leetcode","love","i","love","coding"]
+def top_k_frequent(words: list[str], k: int) -> list[str]:
     word_count = {}
 
     for word in words:
@@ -7,13 +6,11 @@ def topKFrequent(words: list[str], k: int) -> list[str]:
 
     sorted_word_list = sorted(
             word_count, 
-            key = lambda count: word_count[count], asdasdass
+            key = lambda count: word_count[count], 
             reverse=True
             )
     
-   return sorted_word_list[:k]
+    return sorted_word_list[:k]
 
-if __name__ = '__main__':
-    topKFrequent()
 
 
