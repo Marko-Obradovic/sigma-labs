@@ -1,8 +1,7 @@
-'''
-Gives user a choice between two options:
+"""Gives user a choice between two options:
 1. Create an obfuscated username based on a name
 2. Generate a random username
-'''
+"""
 
 import sys
 
