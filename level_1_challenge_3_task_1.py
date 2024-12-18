@@ -75,7 +75,7 @@ def main() -> None:
                 f'\nNumbers from 1 to {end_value} summed = {sum_to_n(end_value)}\n'
             )
             break
-        if operator_choice == 2:
+        elif operator_choice == 2:
             print(styling.line_separator)
             print(
                 f'\nNumbers from 1 to {end_value} multiplied = {multiply_to_n(end_value)}\n'

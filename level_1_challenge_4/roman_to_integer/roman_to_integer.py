@@ -1,3 +1,6 @@
+"""Converts a Roman numeral string to its integer equivalent.
+"""
+
 def roman_to_int(s):
     roman_to_value = {
         "I": 1,
@@ -18,7 +21,7 @@ def roman_to_int(s):
             total -= current_value
         else:
             total += current_value
-    
     last_index_value = roman_to_value[s[-1]]
 
-    return total + last_index_value 
+    converted_roman_numeral = total + last_index_value
+    return converted_roman_numeral
