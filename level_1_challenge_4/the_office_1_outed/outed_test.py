@@ -1,12 +1,13 @@
-import outed
 import unittest
+
+from outed import main, calculate_happiness_value
 
 
 class TestOutedSolution(unittest.TestCase):
 
     def test_bad_outcome_one(self):
         self.assertEqual(
-            outed.outed(
+            main(calculate_happiness_value(
                 {
                     'tim': 0,
                     'jim': 2,
@@ -19,11 +20,11 @@ class TestOutedSolution(unittest.TestCase):
                     'alex': 3,
                     'john': 2,
                     'mr': 0
-                }, 'laura'), 'Get Out Now!')
+                }, 'laura')), 'Get Out Now!')
 
     def test_good_outcome(self):
         self.assertEqual(
-            outed.outed(
+            main(calculate_happiness_value(
                 {
                     'tim': 1,
                     'jim': 3,
@@ -36,11 +37,11 @@ class TestOutedSolution(unittest.TestCase):
                     'alex': 9,
                     'john': 9,
                     'mr': 8
-                }, 'katie'), 'Nice Work Champ!')
+                }, 'katie')), 'Nice Work Champ!')
 
     def test_bad_outcome_two(self):
         self.assertEqual(
-            outed.outed(
+            main(calculate_happiness_value(
                 {
                     'tim': 2,
                     'jim': 4,
@@ -53,7 +54,8 @@ class TestOutedSolution(unittest.TestCase):
                     'alex': 3,
                     'john': 2,
                     'mr': 8
-                }, 'john'), 'Get Out Now!')
+                }, 'john')), 'Get Out Now!')
 
 
-if __name__ == '__main__': unittest.main()
+if __name__ == '__main__':
+    unittest.main()

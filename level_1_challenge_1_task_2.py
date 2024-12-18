@@ -1,7 +1,6 @@
+'''This program checks if the user's name is in the list of authorised names and greets them if it is.
+It will prompt the user for their first name and respond accordingly.
 '''
-This program checks if the user's name is in the list of authorised names and greets them if it is.
-
-It will prompt the user for their first name and respond accordingly'''
 
 authorised_names = {"Alice", "Bob"}
 
