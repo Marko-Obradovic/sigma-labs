@@ -1,4 +1,5 @@
 import pytest
+
 from convert_number_to_reversed_array_of_digits import digitize
 
 def test_case_1():
