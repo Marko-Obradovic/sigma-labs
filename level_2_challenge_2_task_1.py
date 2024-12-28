@@ -17,13 +17,17 @@ import styling
 
 def get_guess(previous_guess: int, min_bound: int, max_bound: int) -> int:
     guess = input(f"Guess a number between {min_bound} and {max_bound}: ")
+
     if not guess.isnumeric():
         raise(ValueError("Please enter an integer"))
+    
     guess = int(guess)
+
     if guess == previous_guess:
         raise(ValueError("Same as previous answer. Continuing..."))
     elif guess < 0 or guess > 100:
         raise(ValueError("Please enter a value between 0 and 100"))
+
     return guess
 
 
@@ -48,6 +52,7 @@ def run_game(min_bound: int, max_bound: int) -> str:
         except ValueError as e:
             print(e)
             continue
+
         result = check_guess(guess, answer)
         print(result)
         tries += 1
