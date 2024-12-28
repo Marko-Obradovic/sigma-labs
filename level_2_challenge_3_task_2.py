@@ -15,10 +15,6 @@ def error_handling(func: Callable) -> Callable:
         while True:
             try:
                 return func()
-            except KeyboardInterrupt:
-                print("")
-                print(styling.notification("Program Stopped"))
-                sys.exit()
             except ValueError:
                 print(styling.notification("Invalid input. Please enter a valid number."))
                 continue
@@ -34,6 +30,7 @@ def generate_profiles(attributes: list[str], value_groups: zip):
 
 
 def display_details(people_details: dict) -> None:
+    format_details: list = 
     for person in people_details:
         for i in person.items():
             print(f"{i[0]}: {i[-1]}")
@@ -75,7 +72,6 @@ value_groups = zip(first_names, last_names, ages, employed_status)
 
 people = generate_profiles(attributes, value_groups)
 
-
 def main() -> None:
     display_details(people)
     action = prompt_action()
@@ -85,7 +81,8 @@ def main() -> None:
         last_names.append(new_values[1])
         ages.append(new_values[2])
         employed_status.append(new_values[3])
-        print(display_details(generate_profiles(attributes, value_groups)))
+        people_two = generate_profiles(attributes, value_groups)
+        print(display_details(people_two))
     elif action == "Remove":
 #        remove_entry_from_list()
         print("removal successful")

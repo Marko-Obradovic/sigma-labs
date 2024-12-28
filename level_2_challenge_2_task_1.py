@@ -15,55 +15,54 @@ from collections.abc import Callable
 
 import styling
 
-def error_handling(func: Callable[[], int]) -> Callable[[], int]:
-    @functools.wraps(func)
-    def wrapper() -> int:
-        while True:
-            try:
-                return func()
-            except KeyboardInterrupt:
-                print("")
-                print(styling.notification("Program Stopped"))
-                sys.exit()
-            except ValueError:
-                print(styling.notification("Invalid input. Please enter a valid number."))
-                continue
-    return wrapper
+def get_guess(previous_guess: int, min_bound: int, max_bound: int) -> int:
+    guess = input(f"Guess a number between {min_bound} and {max_bound}: ")
+    if not guess.isnumeric():
+        raise(ValueError("Please enter an integer"))
+    guess = int(guess)
+    if guess == previous_guess:
+        raise(ValueError("Same as previous answer. Continuing..."))
+    elif guess < 0 or guess > 100:
+        raise(ValueError("Please enter a value between 0 and 100"))
+    return guess
 
 
-@error_handling
-def prompt_guess() -> int:
-    return int(input("Guess a number between 0 and 100: "))
+def check_guess(guess: int, answer: int) -> str:
+    if guess < answer:
+        return "Higher..."
+    elif guess > answer:
+        return "Lower..."
+    else:
+        return "You Won!"
 
 
-def check_guess() -> str:
-    answer: int = random.randint(0, 100)
-    previous_guess: int = 0
-    tries: int = 0
+def run_game(min_bound: int, max_bound: int) -> str:
+    answer = random.randint(0, 100)
+    previous_guess = float("inf")
+    print(answer)
+    tries = 0
 
     while True:
-        guess: int = prompt_guess()
-        if guess == previous_guess:
-            print(styling.notification("Same as previous answer. Continuing..."))
+        try:
+            guess = get_guess(previous_guess, min_bound, max_bound)
+        except ValueError as e:
+            print(e)
             continue
-        elif guess < 0 or guess > 100:
-            print(styling.notification("Please enter a value between 0 and 100"))
-            continue
+        result = check_guess(guess, answer)
+        print(result)
         tries += 1
-        if guess < answer:
-            print("Higher...")
-        elif guess > answer:
-            print("Lower...")
-        elif guess == answer:
-            print("You Won!")
-            break
         previous_guess = guess
+        if guess == answer:
+            break
 
     return f"Attempts: {tries}"
 
 
 def main() -> None:
-    print(check_guess())
+    min_bound = 0
+    max_bound = 100
+    print(run_game(min_bound, max_bound))
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
+
