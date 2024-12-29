@@ -17,10 +17,9 @@ def generate_profile(first_name: str, last_name: str, age: int, employed_status:
 
 
 def get_new_details() -> dict:
-    first_name = (input("First name: "))
-    first_name = firstname.lower()
+    first_name = (input("First name: ")).title()
 
-    last_name = (input("Last name: "))
+    last_name = (input("Last name: ")).title()
 
     age = (input("Age: "))
     if not age.isnumeric():
@@ -50,24 +49,6 @@ Employed: {person['employed_status']}
 ---------------------------------""")
 
 
-def prompt_action() -> str:
-    choice = str(input(f"\nType 'Add' to add an entry to the list\nType 'Remove' to remove an entry\nType 'Exit' to exit the program\n\n"))
-    return choice
-
-
-def add_entry_to_list():
-    """Asks 
-    """
-    new_first_name = input("enter first name: ")
-    new_last_name = input("enter last name: ")
-    new_age = input("enter age: ")
-    new_employed_status = input("enter employment status: ")
-
-    new_value_groups = [new_first_name, new_last_name, new_age, new_employed_status]
-
-    return new_value_groups
-
-
 def find_names(people_details: list[dict], name_for_removal: str) -> list[tuple[str]]:
     names_found = [{"first_name":person["first_name"], "last_name":person["last_name"]}
                    for num, person in enumerate(people_details)
@@ -81,7 +62,7 @@ def remove_entry(people_details: list[dict], names_found: list[tuple[str]], name
         print("There are multiple people with that name:")
         for person in names_found:
             print(f"{person['first_name']} {person['last_name']}")
-        last_name_for_removal = input("Please enter the last name of the person you want to remove: ")
+        last_name_for_removal = input("Please enter the last name of the person you want to remove: ").title()
 
         for num, person in enumerate(people_details):
             if name_for_removal == person["first_name"] and last_name_for_removal == person["last_name"]:
@@ -108,7 +89,7 @@ def main() -> None:
 
     while True:
         try:
-            action = prompt_action()
+            action = str(input(f"\nType 'Add' to add an entry to the list\nType 'Remove' to remove an entry\nType 'Exit' to exit the program\n\n"))
         except ValueError as value_error:
             print(value_error)
             continue
@@ -123,7 +104,7 @@ def main() -> None:
             display_details(people)
 
         elif action == "Remove":
-            name_for_removal = input("Enter a name you would like to remove: ").upper()
+            name_for_removal = input("Enter a name you would like to remove: ").title()
             names_found = find_names(people, name_for_removal)
             try:
                 removed_entry = remove_entry(people, names_found, name_for_removal)
