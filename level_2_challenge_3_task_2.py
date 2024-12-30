@@ -165,10 +165,10 @@ def remove_profile(people_profiles: list[dict],
     Raises:
         UnboundLocalError: If no matching person is found to remove.
     """
-    # If there are multiple matches, prompt for last name to remove
 
     removed_entry = None
 
+    # If there are multiple matches, prompt for last name to remove
     if len(names_found) > 1:
         print("")
         print("There are multiple people with that name:")
