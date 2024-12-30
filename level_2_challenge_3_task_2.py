@@ -12,9 +12,9 @@ employment status.
 '''
 
 def create_profile(first_name: str,
-                     last_name: str,
-                     age: int,
-                     employed_status: bool) -> dict:
+                   last_name: str,
+                   age: int,
+                   employed_status: bool) -> dict:
     """
     Generates a profile for a person with their provided personal 
     details.
@@ -116,7 +116,7 @@ Employed: {person['employed_status']}
 
 
 def find_profiles_by_first_name(people_profiles: list[dict],
-               name_for_removal: str) -> list[dict]:
+                                name_for_removal: str) -> list[dict]:
     """
     Searches for people with the specified first name in the list of 
     people details.
@@ -140,8 +140,8 @@ def find_profiles_by_first_name(people_profiles: list[dict],
 
 
 def remove_profile(people_profiles: list[dict],
-                 names_found: list[dict],
-                 name_for_removal: str) -> dict:
+                   names_found: list[dict],
+                   name_for_removal: str) -> dict:
     """
     Removes an entry from the list of people details based on the 
     provided name.
