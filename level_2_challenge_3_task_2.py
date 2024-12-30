@@ -32,7 +32,7 @@ def create_profile(first_name: str,
         - first_name 
         - last_name
         - age
-        - empoyment_status
+        - employment_status
     """
 
     people = {
@@ -105,6 +105,7 @@ def display_details(people_profiles: list) -> None:
     Returns:
         None
     """
+    print("")
     for person in people_profiles:
         print(
         f"""First Name: {person['first_name']}
@@ -133,7 +134,7 @@ def find_profiles_by_first_name(people_profiles: list[dict],
     """
     names_found = [{"first_name":person["first_name"],
                     "last_name":person["last_name"]}
-                   for num, person in enumerate(people_profiles)
+                   for person in people_profiles
                    if name_for_removal == person["first_name"]]
     return names_found
 
@@ -165,11 +166,16 @@ def remove_profile(people_profiles: list[dict],
         UnboundLocalError: If no matching person is found to remove.
     """
     # If there are multiple matches, prompt for last name to remove
+
+    removed_entry = None
+
     if len(names_found) > 1:
+        print("")
         print("There are multiple people with that name:")
         for person in names_found:
-            print(f"{person['first_name']} {person['last_name']}")
+            print(f"- {person['first_name']} {person['last_name']}")
 
+        print("")
         last_name_for_removal = input(
                 "Please enter the last name of the person you want to remove: "
         ).title()
@@ -184,6 +190,9 @@ def remove_profile(people_profiles: list[dict],
         for num, person in enumerate(people_profiles):
             if name_for_removal == person["first_name"]:
                 removed_entry = people_profiles.pop(num)
+
+    if removed_entry is None:
+        raise UnboundLocalError("No matching person found to remove")
 
     return removed_entry
 
@@ -208,11 +217,6 @@ def main() -> None:
         {"first_name": "Jane",
          "last_name": "Doe",
          "age": 42,
-         "employed_status": True},
-
-        {"first_name": "Jane",
-         "last_name": "Test",
-         "age": 100000,
          "employed_status": True},
 
         {"first_name": "Tom",
@@ -241,14 +245,17 @@ def main() -> None:
 
         if action.title() == "Add":
             try:
+                print("")
                 new_profile = prompt_for_personal_details()
             except ValueError as e:
+                print("")
                 print(e)
                 continue
             people_profiles.append(new_profile)
             display_details(people_profiles)
 
         elif action.title() == "Remove":
+            print("")
             name_for_removal = input(
                     "Enter a name you would like to remove: "
             ).title()
@@ -256,8 +263,9 @@ def main() -> None:
 
             try:
                 remove_profile(people_profiles, names_found, name_for_removal)
-            except UnboundLocalError:
-                print("Name not found.")
+            except UnboundLocalError as e:
+                print("")
+                print(e)
                 continue
 
             display_details(people_profiles)
@@ -266,6 +274,7 @@ def main() -> None:
             break
 
         else:
+            print("")
             print("Please enter either 'Add', 'Remove', or 'Exit'.")
 
 
