@@ -4,6 +4,7 @@ It will prompt the user for their first name and respond accordingly.
 
 authorised_names = {"Alice", "Bob"}
 
+
 def get_name() -> str:
     name: str = input("What's your first name?: ")
     return name.title().strip()
@@ -17,6 +18,7 @@ def greet_if_authorised(name: str, authorised_names_list: set) -> str:
 
 def main(message: str) -> None:
     print(message)
+
 
 if __name__ == "__main__":
     main(greet_if_authorised(get_name(), authorised_names))

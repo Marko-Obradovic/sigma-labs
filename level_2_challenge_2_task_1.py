@@ -15,18 +15,19 @@ from collections.abc import Callable
 
 import styling
 
+
 def get_guess(previous_guess: int, min_bound: int, max_bound: int) -> int:
     guess = input(f"Guess a number between {min_bound} and {max_bound}: ")
 
     if not guess.isnumeric():
-        raise(ValueError("Please enter an integer"))
-    
+        raise (ValueError("Please enter an integer"))
+
     guess = int(guess)
 
     if guess == previous_guess:
-        raise(ValueError("Same as previous answer. Continuing..."))
+        raise (ValueError("Same as previous answer. Continuing..."))
     elif guess < 0 or guess > 100:
-        raise(ValueError("Please enter a value between 0 and 100"))
+        raise (ValueError("Please enter a value between 0 and 100"))
 
     return guess
 
@@ -68,6 +69,6 @@ def main() -> None:
     max_bound = 100
     print(run_game(min_bound, max_bound))
 
+
 if __name__ == "__main__":
     main()
-

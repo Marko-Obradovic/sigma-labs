@@ -9,20 +9,21 @@ The module also includes a 'main' function that initialises a list of
 pets and calls 'say_hello_to_pets' to display their greetings.
 """
 
-def say_hello_to_pets(pets: list[dict[str,str]]) -> None:
+
+def say_hello_to_pets(pets: list[dict[str, str]]) -> None:
     """
     Greets each pet in the provided list based on its type.
 
     Args:
         pets (list of dict): A list of dictionaries containing the 
         pet's name and type as strings.
-                                              
+
     Returns:
         None: Prints the hello message based on the pet. 
     """
     greeting_map = {"dog": "woof", "cat": "meow"}
     unrecognised_pets = [
-            pet for pet in pets if pet["type"] not in greeting_map
+        pet for pet in pets if pet["type"] not in greeting_map
     ]
 
     for pet in pets:
@@ -31,7 +32,8 @@ def say_hello_to_pets(pets: list[dict[str,str]]) -> None:
             print(f"{pet_greeting}, {pet['name']}!")
 
     if unrecognised_pets:
-        raise AttributeError("there are unrecognised pet(s) found in the system.")
+        raise AttributeError(
+            "there are unrecognised pet(s) found in the system.")
 
 #       I know that we're supposed to raise an AttributeError but I found a nice
 #       way to handle the error without it:
@@ -44,7 +46,7 @@ def say_hello_to_pets(pets: list[dict[str,str]]) -> None:
 def main() -> None:
     """
     Initializes a list of pets and calls `say_hello_to_pets` to greet them.
- 
+
     Args:
         None
 
@@ -52,11 +54,11 @@ def main() -> None:
         None
     """
     animals = [
-            { "name": "Fluffy", "type": "dog" },
-            { "name": "Parsley", "type": "dog" },
-            { "name": "Ginger", "type": "cat" },
-            { "name": "Poppet", "type": "cow" },
-            { "name": "Biscuit", "type": "cat" }
+        {"name": "Fluffy", "type": "dog"},
+        {"name": "Parsley", "type": "dog"},
+        {"name": "Ginger", "type": "cat"},
+        {"name": "Poppet", "type": "cow"},
+        {"name": "Biscuit", "type": "cat"}
     ]
 
     try:
@@ -64,6 +66,6 @@ def main() -> None:
     except AttributeError as e:
         print(f"\nError: {e}")
 
+
 if __name__ == "__main__":
     main()
-

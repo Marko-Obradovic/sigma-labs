@@ -12,6 +12,7 @@ from typing import Callable, Any
 
 import styling
 
+
 def input_error_handling(func: Callable) -> Callable:
     @functools.wraps(func)
     def wrapper() -> Any:
@@ -30,7 +31,8 @@ def input_error_handling(func: Callable) -> Callable:
 def get_username_creation_method() -> int:
     welcome_message = "Welcome to the username creator. Please choose an option: "
     display_choices = "1. Create based on a name\n2. Generate a random username"
-    username_creation_method = int(input(f"\n{welcome_message}\n\n{display_choices}\n\n-> "))
+    username_creation_method = int(
+        input(f"\n{welcome_message}\n\n{display_choices}\n\n-> "))
     return username_creation_method
 
 
@@ -63,7 +65,8 @@ def intersperse_name(name_input: str, surname_input: str) -> list[str]:
 
 
 def random_name_generator(letters_and_numbers: list[str]) -> str:
-    random_name = ''.join(random.choices(letters_and_numbers, k=random.randint(3, 9)))
+    random_name = ''.join(random.choices(
+        letters_and_numbers, k=random.randint(3, 9)))
     return random_name
 
 
@@ -92,7 +95,8 @@ def main() -> None:
         surname = random_name_generator(letters_and_numbers_list())
 
     interspersed_name = intersperse_name(reverse_name(name), surname)
-    print(f'\nYour username is: {format_name(interspersed_name, name_input = name)}\n')
+    print(
+        f'\nYour username is: {format_name(interspersed_name, name_input = name)}\n')
 
 
 if __name__ == "__main__":

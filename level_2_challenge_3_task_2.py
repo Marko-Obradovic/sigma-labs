@@ -11,6 +11,7 @@ The profiles contain the person's first name, last name, age, and
 employment status.
 '''
 
+
 def create_profile(first_name: str,
                    last_name: str,
                    age: int,
@@ -25,7 +26,7 @@ def create_profile(first_name: str,
         age (int): The individual's age.
         employed_status (bool): The individual's employment status (True
         for employed, False for not).
-    
+
     Returns:
         dict: A dictionary containing the individual's profile 
         information, with keys for:
@@ -36,11 +37,11 @@ def create_profile(first_name: str,
     """
 
     people = {
-            "first_name": first_name,
-            "last_name": last_name,
-            "age": age,
-            "employed_status": employed_status
-            }
+        "first_name": first_name,
+        "last_name": last_name,
+        "age": age,
+        "employed_status": employed_status
+    }
 
     return people
 
@@ -86,10 +87,10 @@ def prompt_for_personal_details() -> dict:
         raise ValueError("Please type either 'yes' or 'no'.")
 
     new_details = create_profile(
-            first_name,
-            last_name,
-            age,
-            employed_status
+        first_name,
+        last_name,
+        age,
+        employed_status
     )
     return new_details
 
@@ -108,7 +109,7 @@ def display_details(people_profiles: list) -> None:
     print("")
     for person in people_profiles:
         print(
-        f"""First Name: {person['first_name']}
+            f"""First Name: {person['first_name']}
 Last Name: {person['last_name']}
 Age: {person['age']}
 Employed: {person['employed_status']}
@@ -132,8 +133,8 @@ def find_profiles_by_first_name(people_profiles: list[dict],
         list[dict]: A list of dictionaries containing the first and 
         last name of people matching the specified first name.
     """
-    names_found = [{"first_name":person["first_name"],
-                    "last_name":person["last_name"]}
+    names_found = [{"first_name": person["first_name"],
+                    "last_name": person["last_name"]}
                    for person in people_profiles
                    if name_for_removal == person["first_name"]]
     return names_found
@@ -153,10 +154,10 @@ def remove_profile(people_profiles: list[dict],
     Args:
         people_profiles (list[dict]): A list of dictionaries containing 
         people profiles.
-        
+
         names_found (list[dict]): A list of dictionaries containing 
         people with the name requested for removal.
-        
+
         name_for_removal (str): The first name of the person to remove.
 
     Returns:
@@ -177,12 +178,12 @@ def remove_profile(people_profiles: list[dict],
 
         print("")
         last_name_for_removal = input(
-                "Please enter the last name of the person you want to remove: "
+            "Please enter the last name of the person you want to remove: "
         ).title()
 
         for num, person in enumerate(people_profiles):
             if (name_for_removal == person["first_name"] and
-                last_name_for_removal == person["last_name"]):
+                    last_name_for_removal == person["last_name"]):
                 removed_entry = people_profiles.pop(num)
 
     else:
@@ -226,21 +227,21 @@ def main() -> None:
 
         {"first_name": "Mariam",
          "last_name": "Coulter",
-         "age": 66, 
+         "age": 66,
          "employed_status": False},
 
         {"first_name": "Gregory",
          "last_name": "Tims",
          "age": 8,
          "employed_status": False}
-        ]
+    ]
     display_details(people_profiles)
 
     while True:
         action = input(
-                "\nType 'Add' to add an entry to the list\n"
-                "Type 'Remove' to remove an entry\n"
-                "Type 'Exit' to exit the program\n\n"
+            "\nType 'Add' to add an entry to the list\n"
+            "Type 'Remove' to remove an entry\n"
+            "Type 'Exit' to exit the program\n\n"
         )
 
         if action.title() == "Add":
@@ -257,9 +258,10 @@ def main() -> None:
         elif action.title() == "Remove":
             print("")
             name_for_removal = input(
-                    "Enter a name you would like to remove: "
+                "Enter a name you would like to remove: "
             ).title()
-            names_found = find_profiles_by_first_name(people_profiles, name_for_removal)
+            names_found = find_profiles_by_first_name(
+                people_profiles, name_for_removal)
 
             try:
                 remove_profile(people_profiles, names_found, name_for_removal)

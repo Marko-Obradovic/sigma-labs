@@ -9,6 +9,7 @@ from typing import Callable, Any
 
 import styling
 
+
 def error_handle_get_number_input(func: Callable) -> Callable:
     @functools.wraps(func)
     def wrapper(*args, **kwargs) -> Any:
@@ -21,6 +22,7 @@ def error_handle_get_number_input(func: Callable) -> Callable:
             except ValueError:
                 print(error_message)
     return wrapper
+
 
 @error_handle_get_number_input
 def get_number_input(error_message):
@@ -41,7 +43,7 @@ def multiply_to_n(end_value_parameter: int) -> int:
     return total
 
 
-def generate_num_sequence(end_value_parameter: int, incrementation:int) -> list:
+def generate_num_sequence(end_value_parameter: int, incrementation: int) -> list:
     return [
         num for num in range(0, end_value_parameter + 1, incrementation)
         if num > 0
@@ -55,12 +57,15 @@ def sum_num_sequences(sequence_one: list[int], sequence_two: list[int]) -> int:
     return total
 
 
-operator_choice_error = styling.notification('Error. Please enter either 1 or 2')
-invalid_number_error = styling.notification('Error. Please enter a valid number')
+operator_choice_error = styling.notification(
+    'Error. Please enter either 1 or 2')
+invalid_number_error = styling.notification(
+    'Error. Please enter a valid number')
 
 end_value = get_number_input(error_message=invalid_number_error)
 
 print(styling.line_separator)
+
 
 def main() -> None:
     print(
@@ -82,18 +87,19 @@ def main() -> None:
             )
             break
         print(operator_choice_error)
- 
-    multiples_of_three = generate_num_sequence(end_value, incrementation = 3)
-    multiples_of_five = generate_num_sequence(end_value, incrementation = 5)
+
+    multiples_of_three = generate_num_sequence(end_value, incrementation=3)
+    multiples_of_five = generate_num_sequence(end_value, incrementation=5)
 
     multiples_of_three_or_five_summed = sum_num_sequences(
-            multiples_of_three,
-            multiples_of_five
-            )
+        multiples_of_three,
+        multiples_of_five
+    )
 
     multiples_of_three_or_five_message = f'Multiples of three or five up to your chosen number summed: {multiples_of_three_or_five_summed}'
 
     print(multiples_of_three_or_five_message)
+
 
 if __name__ == "__main__":
     main()
