@@ -1,0 +1,5 @@
+Global Scope:
+The global scope refers to the namespace that holds mappings of variables and functions to objects that are accessible throughout the entire module. However, variables in the global scope cannot be accessed directly within functions unless explicitly referenced using the global keyword or passed as arguments.
+
+Local Scope:
+The local scope refers to the namespace where variables and functions created inside a function or lambda expression are mapped to objects. These variables are isolated to the function and cannot be accessed outside it unless explicitly returned or passed. Each function call creates a new local scope, preventing variables from affecting each other across multiple calls of the same function.
